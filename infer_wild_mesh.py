@@ -145,6 +145,9 @@ verts_all = np.concatenate(verts_all)
 reg3d_all = np.hstack(reg3d_all)
 reg3d_all = np.concatenate(reg3d_all)
 
+np.save(verticesFile, verts_all)
+np.save(regular3Dpoints, reg3d_all)
+
 if opts.ref_3d_motion_path:
     ref_pose = np.load(opts.ref_3d_motion_path)
     x = ref_pose - ref_pose[:, :1]
