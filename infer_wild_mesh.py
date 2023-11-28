@@ -153,8 +153,13 @@ reg3d_all = np.concatenate(reg3d_all)
 pose_all = np.concatenate(np.hstack(pose_all))
 cam_all = np.concatenate(np.hstack(cam_all))
 
+<<<<<<< Updated upstream
 np.save("verticesFile", verts_all)
 np.save("regular3Dpoints", reg3d_all)
+=======
+np.save('verticesFile.npy', verts_all)
+np.save('regular3Dpoints.npy', reg3d_all)
+>>>>>>> Stashed changes
 
 if opts.ref_3d_motion_path:
     ref_pose = np.load(opts.ref_3d_motion_path)
