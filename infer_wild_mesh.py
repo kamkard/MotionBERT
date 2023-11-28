@@ -148,8 +148,8 @@ verts_all = np.hstack(verts_all)
 verts_all = np.concatenate(verts_all)
 reg3d_all = np.hstack(reg3d_all)
 reg3d_all = np.concatenate(reg3d_all)
-pose_all = np.concatenate(np.hstack(pose_all))
-cam_all = np.concatenate(np.hstack(cam_all))
+pose_all = torch.cat(pose_all, dim=0)
+cam_all = torch.cat(cam_all, dim = 0)
 
 output_dict = {
             'pred_cam': cam_all,
