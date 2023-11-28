@@ -140,8 +140,8 @@ with torch.no_grad():
         output = output_final
         verts_all.append(output[0]['verts'].cpu().numpy())
         reg3d_all.append(output[0]['kp_3d'].cpu().numpy())
-        pose_all.append(output_flip_pose[:,3:])
-        cam_all.append(output_flip_pose[:,:3])
+        pose_all.append(output_flip_pose[:,3:].cpu().numpy())
+        cam_all.append(output_flip_pose[:,:3].cpu().numpy())
                 
         
 verts_all = np.hstack(verts_all)
