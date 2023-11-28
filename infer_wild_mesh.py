@@ -107,6 +107,9 @@ test_loader = DataLoader(wild_dataset, **testloader_params)
 
 verts_all = []
 reg3d_all = []
+pose_all = []
+cam_all = []
+
 with torch.no_grad():
     for batch_input in tqdm(test_loader):
         batch_size, clip_frames = batch_input.shape[:2]
@@ -139,11 +142,16 @@ with torch.no_grad():
         output = output_final
         verts_all.append(output[0]['verts'].cpu().numpy())
         reg3d_all.append(output[0]['kp_3d'].cpu().numpy())
-
+        pose_all.append(output_flip_pose[:,3:])
+        cam_all.append(output_flip_pose[:,:3])
+                
+        
 verts_all = np.hstack(verts_all)
 verts_all = np.concatenate(verts_all)
 reg3d_all = np.hstack(reg3d_all)
 reg3d_all = np.concatenate(reg3d_all)
+pose_all = np.concatenate(np.hstack(pose_all))
+cam_all = np.concatenate(np.hstack(cam_all))
 
 np.save("verticesFile", verts_all)
 np.save("regular3Dpoints", reg3d_all)
