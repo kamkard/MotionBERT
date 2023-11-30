@@ -140,7 +140,7 @@ with torch.no_grad():
         output = output_final
         verts_all.append(output[0]['verts'].cpu().numpy())
         reg3d_all.append(output[0]['kp_3d'].cpu().numpy())
-        pose_all.append(output_flip_pose[:,:].reshape(batch_size * clip_frames, -1))
+        pose_all.append(output_flip_pose[:,:].reshape(batch_size * clip_frames, -1)).cpu().numpy()
 
                 
         
